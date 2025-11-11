@@ -27,7 +27,7 @@ project/assembly_name="SheepSimulator"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/auto_mat_assign/plugin.cfg", "res://addons/debug_menu/plugin.cfg", "res://addons/input_helper/plugin.cfg")
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/input_helper/plugin.cfg")
 
 [input]
 
