@@ -1,6 +1,5 @@
-# Hello!
-
-Test 1234
+# Sheep Project
+For CSC 491/519 DevOps
 
 ### Authors
 - Aman Anas (unityID: mbanas)
