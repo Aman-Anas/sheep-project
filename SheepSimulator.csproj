@@ -22,4 +22,7 @@
     <TrimmerRootAssembly Include="$(TargetName)" />
     
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Chickensoft.GoDotTest" Version="2.0.21" />
+  </ItemGroup>
 </Project>
