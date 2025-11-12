@@ -13,14 +13,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-  
     <!-- Use memorypack for saving config data -->
     <PackageReference Include="MemoryPack" Version="1.21.3" />
-  
+
     <!-- Root the assemblies to avoid trimming. -->
     <TrimmerRootAssembly Include="GodotSharp" />
     <TrimmerRootAssembly Include="$(TargetName)" />
-    
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Chickensoft.GoDotTest" Version="2.0.21" />
