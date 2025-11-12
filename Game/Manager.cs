@@ -62,29 +62,29 @@ public partial class Manager : Node
         GetTree().Quit();
     }
 
-    public void LoadConfig(bool defaultFile = false)
+    public void LoadConfig(bool useDefaultConfig = false)
     {
-        if (!defaultFile)
+        // If there's no default config yet (e.g. first game start)
+        if (!FileAccess.FileExists(defaultConfigPath))
         {
+            DataUtils.SaveData(defaultConfigPath, new GameConfig());
+        }
+
+        if (!useDefaultConfig)
+        {
+            // Try to load a saved user config
             Config = DataUtils.LoadFromFileOrNull<GameConfig>(configPath)!;
         }
 
         // Fall back to default config
-        if (Config == null || defaultFile)
+        if (Config == null || useDefaultConfig)
         {
             Config = DataUtils.LoadFromFileOrNull<GameConfig>(defaultConfigPath)!;
         }
 
-        // Use current settings if no default either
         Config ??= new();
 
         Config.ApplyConfig();
-
-        // If there's no default config yet (e.g. first game start)
-        if (!FileAccess.FileExists(defaultConfigPath))
-        {
-            DataUtils.SaveData(defaultConfigPath, Config);
-        }
     }
 
     public void SaveConfig()
