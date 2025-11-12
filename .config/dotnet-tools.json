@@ -6,7 +6,15 @@
       "version": "2.5.168",
       "commands": [
         "mpc"
-      ]
+      ],
+      "rollForward": false
+    },
+    "csharpier": {
+      "version": "1.2.1",
+      "commands": [
+        "csharpier"
+      ],
+      "rollForward": false
     }
   }
 }
