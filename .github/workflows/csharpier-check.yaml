@@ -6,7 +6,7 @@ on:
 
 jobs:
   check_formatting:
-    runs-on: self-hosted
+    runs-on: very-cool-self-hosted-mbanas
     name: Check Formatting
     steps:
       - uses: actions/checkout@v2
