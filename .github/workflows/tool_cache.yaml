@@ -1,4 +1,4 @@
-name: Upload Node.js 14 and 16 tool cache
+name: Upload dotnet tool cache
 on: push
 jobs:
   upload_tool_cache:
