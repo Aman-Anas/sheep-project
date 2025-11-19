@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://sawccqxki2yb"]
+
+[ext_resource type="PackedScene" uid="uid://bo0qt1u8pac2f" path="res://assets/batch_exports/sheep/SheepTank.gltf" id="1_rqr0g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rqr0g"]
+size = Vector3(1.125, 1.2232056, 1.4742432)
+
+[node name="Sheep" type="RigidBody3D"]
+
+[node name="SheepTank2" parent="." instance=ExtResource("1_rqr0g")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.70000005, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6609802, -0.105163574)
+shape = SubResource("BoxShape3D_rqr0g")
