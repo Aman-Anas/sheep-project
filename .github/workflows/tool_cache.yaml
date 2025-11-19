@@ -8,14 +8,18 @@ jobs:
         run: |
           mv "${{ runner.tool_cache }}" "${{ runner.tool_cache }}.old"
           mkdir -p "${{ runner.tool_cache }}"
-      - name: Setup Node 14
-        uses: actions/setup-node@v4
+
+      - name: Checkout action v4
+        uses: actions/checkout@v4
+
+      - name: Checkout action v2
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
         with:
-          node-version: 14.x
-      - name: Setup Node 16
-        uses: actions/setup-node@v4
-        with:
-          node-version: 16.x
+          dotnet-version: 9.0.x
+
       - name: Archive tool cache
         run: |
           cd "${{ runner.tool_cache }}"
