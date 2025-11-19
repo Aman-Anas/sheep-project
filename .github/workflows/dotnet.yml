@@ -16,9 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Setup .NET
-        uses: actions/setup-dotnet@v5
-        with:
-          dotnet-version: 9.0.x
+        run: |
+          sudo add-apt-repository ppa:dotnet/backports \
+          && sudo apt-get update \
+          && sudo apt-get install -y dotnet-sdk-9.0
 
       - name: Restore dependencies
         run: dotnet restore
