@@ -12,8 +12,10 @@
 
 ## Next steps
 **Aman:** 
-- Work on implementing parts of the Ansible playbook used for deployment
+- Work on implementing parts of the Ansible playbook used for deployment and ensuring the dotnet application builds.
+  - [Estimated: 3-4 days]
 - Work on developing test cases using GodotTest
+  - [Estimated: 2-3 days]
 
 **Andrew:** 
 
