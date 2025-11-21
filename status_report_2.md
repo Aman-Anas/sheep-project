@@ -5,6 +5,7 @@
 - Migrated files from old repo to new repo in CSC-519 organization.
 - Set up Github Actions runner on the durable deployment machine using a container and Dockerfile.
 - Installed dotnet and other required tools on the deployment machine.
+- See commit: https://github.ncsu.edu/CSC-519/f2025_project_sheep_project/pull/3/commits/a2c3116d33feb6d1beb826123a65b9f11270ccb4
 
 **Andrew:** 
 - Added branch protection to new repo
