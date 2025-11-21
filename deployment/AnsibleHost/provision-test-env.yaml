@@ -1,0 +1,11 @@
+---
+- name: Deploy Sheep Project
+  hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Install dotnet SDK
+      apt:
+        name: dotnet-sdk-9.0
+        state: present
+        update_cache: yes
