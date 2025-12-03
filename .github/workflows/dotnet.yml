@@ -40,10 +40,10 @@ jobs:
         run: dotnet build --no-restore
 
       - name: Install godot version
-        run: godotenv godot install
+        run: godotenv godot install 4.5.1
 
       - name: Set using godot version
-        run: godotenv godot use
+        run: godotenv godot use 4.5.1
 
       - name: Run unit tests
         run: ${{ env.GODOT }} --run-tests --quit-on-finish
