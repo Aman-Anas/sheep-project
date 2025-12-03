@@ -37,4 +37,4 @@ jobs:
 
       - name: Run unit tests
         shell: bash
-        run: ${{ env.GODOT }} --run-tests --quit-on-finish
+        run: "${{ env.GODOT }} --run-tests --quit-on-finish"
