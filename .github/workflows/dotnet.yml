@@ -26,9 +26,6 @@ jobs:
           dotnet tool restore
           dotnet csharpier check .
 
-      - name: Build
-        run: dotnet build --no-restore
-
       - name: Install godot version
         run: godotenv godot install 4.5.1
 
@@ -37,4 +34,4 @@ jobs:
 
       - name: Run unit tests
         shell: bash
-        run: "${{ env.GODOT }} --run-tests --quit-on-finish"
+        run: ~/.config/godotenv/godot/bin/godot --run-tests --quit-on-finish
