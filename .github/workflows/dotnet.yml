@@ -32,17 +32,6 @@ jobs:
       - name: Set using godot version
         run: godotenv godot use 4.5.1
 
-      - name: Download Godot export templates
-        shell: bash
-        run: |
-          TEMPLATE_VERSION="4.5.1.stable.mono"
-          TEMPLATE_DIR="$HOME/.local/share/godot/export_templates/$TEMPLATE_VERSION"
-          mkdir -p "$TEMPLATE_DIR"
-          curl -L "https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_mono_export_templates.tpz" -o /tmp/templates.tpz
-          unzip -o /tmp/templates.tpz -d /tmp/templates
-          mv /tmp/templates/templates/* "$TEMPLATE_DIR/"
-          rm -rf /tmp/templates /tmp/templates.tpz
-
       - name: Import Godot project
         shell: bash
         run: ~/.config/godotenv/godot/bin/godot --headless --import --quit
