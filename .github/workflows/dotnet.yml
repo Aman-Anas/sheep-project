@@ -54,7 +54,10 @@ jobs:
           ~/.config/godotenv/godot/bin/godot --headless --run-tests --quit-on-finish --path .
 
       - name: Package for release
-        run: ~/.config/godotenv/godot/bin/godot --headless --export-release "Windows Desktop" "build/win64/sheep_project.exe"
+        shell: bash
+        run: |
+          mkdir -p build/win64
+          ~/.config/godotenv/godot/bin/godot --headless --export-release "Windows Desktop" "build/win64/sheep_project.exe"
 
       - name: Upload Windows Build
         uses: actions/upload-artifact@v4
