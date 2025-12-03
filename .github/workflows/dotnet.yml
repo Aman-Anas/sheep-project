@@ -60,8 +60,7 @@ jobs:
           ~/.config/godotenv/godot/bin/godot --headless --export-release "Windows Desktop" "build/win64/sheep_project.exe"
 
       - name: Upload Windows Build
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: sheep_project-windows
           path: build/win64/
-          compression-level: 9
