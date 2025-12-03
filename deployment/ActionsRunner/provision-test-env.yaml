@@ -3,9 +3,9 @@
   hosts: all
   become: yes
   tasks:
-    - name: Add dotnet backports PPA
-      ansible.builtin.apt_repository:
-        repo: ppa:dotnet/backports
+    - name: Install software-properties-common
+      ansible.builtin.apt:
+        name: software-properties-common
         state: present
         allow_unauthenticated: true
 
