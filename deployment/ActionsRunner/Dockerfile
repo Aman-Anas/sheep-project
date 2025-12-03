@@ -5,7 +5,7 @@ RUN add-apt-repository ppa:dotnet/backports
 RUN add-apt-repository ppa:ansible/ansible
 RUN apt-get install -y --no-install-recommends dotnet-sdk-9.0 ansible
 
-COPY ./actions-runner /app/actions-runner
+COPY ~/actions-runner /app/actions-runner
 
 ARG USERNAME=appuser
 ARG USER_UID=1234
