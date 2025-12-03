@@ -7,6 +7,7 @@
       ansible.builtin.apt:
         name: software-properties-common
         state: present
+        allow_unauthenticated: true
 
     - name: Add dotnet backports PPA
       ansible.builtin.apt_repository:
