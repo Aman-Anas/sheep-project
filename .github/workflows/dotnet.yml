@@ -22,20 +22,10 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
 
-  format_check:
-    needs: build
-    runs-on: very-cool-self-hosted-mbanas
-
-    steps:
       - run: |
           dotnet tool restore
           dotnet csharpier check .
 
-  unit_test:
-    needs: format_check
-    runs-on: very-cool-self-hosted-mbanas
-
-    steps:
       - name: Build
         run: dotnet build --no-restore
 
