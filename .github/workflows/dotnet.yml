@@ -46,4 +46,4 @@ jobs:
         run: godotenv godot use 4.5.1
 
       - name: Run unit tests
-        run: ${{ env.GODOT }} --run-tests --quit-on-finish
+        run: $GODOT --run-tests --quit-on-finish
