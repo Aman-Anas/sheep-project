@@ -17,6 +17,6 @@ RUN groupadd --gid $USER_GID $USERNAME \
 USER $USERNAME
 
 RUN dotnet tool install --global Chickensoft.GodotEnv
-ENV PATH="$HOME/.dotnet/tools${PATH}"
+ENV PATH="~/.dotnet/tools:${PATH}"
 
 ENTRYPOINT ["/app/actions-runner/run.sh"]
