@@ -2,8 +2,8 @@ FROM ubuntu:24.04
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends software-properties-common
 RUN add-apt-repository ppa:dotnet/backports
-RUN apt-get install -y --no-install-recommends \
-  dotnet-sdk-9.0
+RUN add-apt-repository ppa:ansible/ansible
+RUN apt-get install -y --no-install-recommends dotnet-sdk-9.0 ansible
 
 COPY ./actions-runner /app/actions-runner
 
