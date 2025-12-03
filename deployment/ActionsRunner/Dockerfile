@@ -3,7 +3,7 @@ RUN apt-get update
 RUN apt-get install -y --no-install-recommends software-properties-common
 RUN add-apt-repository ppa:dotnet/backports
 RUN apt-get install -y --no-install-recommends \
-  dotnet-sdk-9.0
+  dotnet-sdk-9.0 ansible
 
 COPY ./actions-runner /app/actions-runner
 

@@ -1,9 +1,5 @@
 FROM ubuntu:24.04
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends software-properties-common
-RUN add-apt-repository ppa:dotnet/backports
-# RUN apt-get install -y --no-install-recommends \
-#   dotnet-sdk-9.0
 
 # COPY ./actions-runner /app/actions-runner
 
