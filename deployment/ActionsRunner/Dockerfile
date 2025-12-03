@@ -7,9 +7,6 @@ RUN apt-get install -y --no-install-recommends \
 
 COPY ./actions-runner /app/actions-runner
 
-
-RUN dotnet tool install --global Chickensoft.GodotEnv
-
 ARG USERNAME=appuser
 ARG USER_UID=1234
 ARG USER_GID=$USER_UID
@@ -18,5 +15,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
   && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
 
 USER $USERNAME
+
+RUN dotnet tool install --global Chickensoft.GodotEnv
 
 ENTRYPOINT ["/app/actions-runner/run.sh"]
