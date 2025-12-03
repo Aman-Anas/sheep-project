@@ -15,7 +15,8 @@
 
     <DefaultItemExcludes Condition="'$(Configuration)' == 'ExportRelease'">
       $(DefaultItemExcludes);Game.Tests/**/*
-    </DefaultItemExcludes>
+    </DefaultItemExcludes
+    >
   </PropertyGroup>
   <ItemGroup>
     <!-- Use memorypack for saving config data -->

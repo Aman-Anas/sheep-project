@@ -12,8 +12,8 @@ public class SheepTest(Node testScene) : TestClass(testScene)
 {
     private readonly Log _log = new(nameof(SheepTest), new TraceWriter());
 
-    Fixture fixture;
-    Sheep sheepPlayer;
+    Fixture fixture = null!;
+    Sheep sheepPlayer = null!;
 
     [SetupAll]
     public async Task SetupAll()
