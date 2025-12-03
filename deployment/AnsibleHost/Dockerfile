@@ -1,9 +1,6 @@
 FROM ubuntu:24.04
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends software-properties-common
-RUN add-apt-repository ppa:dotnet/backports
-RUN apt-get install -y --no-install-recommends \
-  dotnet-sdk-9.0
+RUN apt-get install -y --no-install-recommends ansible
 
 COPY ./actions-runner /app/actions-runner
 
@@ -15,5 +12,4 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
 
 USER $USERNAME
-
-ENTRYPOINT ["/app/actions-runner/run.sh"]
+RUN ansible-playbook -i hosts.yaml provision-test-env.yaml
