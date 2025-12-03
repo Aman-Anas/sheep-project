@@ -7,7 +7,6 @@
       ansible.builtin.apt:
         name: software-properties-common
         state: present
-        update_cache: yes
     - name: Add dotnet backports PPA
       ansible.builtin.apt_repository:
         repo: ppa:dotnet/backports
