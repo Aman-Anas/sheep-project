@@ -14,6 +14,19 @@
       "request": "attach",
       "processId": "${command:dotrush.pickProcess}",
       "preLaunchTask": "dotrush: Build",
-    }
+    },
+    {
+      "name": "Debug Current Test",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "dotrush: Build",
+      "program": "${env:GODOT}",
+      "args": [
+        // These command line flags are used by GoDotTest to run tests.
+        "--run-tests=${fileBasenameNoExtension}",
+        "--quit-on-finish"
+      ],
+      "cwd": "${workspaceFolder}",
+    },
   ]
 }

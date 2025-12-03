@@ -22,5 +22,22 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
 
-      - name: Test
-        run: dotnet test --no-build --verbosity normal
+  format_check:
+    needs: build
+    runs-on: very-cool-self-hosted-mbanas
+
+    steps:
+      - run: |
+          dotnet tool restore
+          dotnet csharpier check .
+
+  unit_test:
+    needs: format_check
+    runs-on: very-cool-self-hosted-mbanas
+
+    steps:
+      - name: Build
+        run: dotnet build --no-restore
+
+      - name: Run unit tests
+        run: ${{ env.GODOT }} --run-tests --quit-on-finish

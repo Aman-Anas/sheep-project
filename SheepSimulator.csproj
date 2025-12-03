@@ -3,6 +3,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <CodeAnalysisRuleSet>$(ProjectDir).vscode\ruleset.xml</CodeAnalysisRuleSet>
     <EnableDynamicLoading>true</EnableDynamicLoading>
+
     <!-- Enable NativeAOT -->
     <PublishAot>false</PublishAot>
     <IsAotCompatible>true</IsAotCompatible>
@@ -11,16 +12,20 @@
     <!--Add the recommended C# analyzers-->
     <AnalysisMode>Standard</AnalysisMode>
     <Nullable>enable</Nullable>
+
+    <DefaultItemExcludes Condition="'$(Configuration)' == 'ExportRelease'">
+      $(DefaultItemExcludes);Game.Tests/**/*
+    </DefaultItemExcludes>
   </PropertyGroup>
   <ItemGroup>
     <!-- Use memorypack for saving config data -->
+    <PackageReference Include="Chickensoft.GoDotTest" Version="2.0.21" />
+    <PackageReference Include="GodotTestDriver" Version="2.1.0" />
     <PackageReference Include="MemoryPack" Version="1.21.3" />
+    <PackageReference Include="xunit" Version="2.9.3" />
 
     <!-- Root the assemblies to avoid trimming. -->
     <TrimmerRootAssembly Include="GodotSharp" />
     <TrimmerRootAssembly Include="$(TargetName)" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Chickensoft.GoDotTest" Version="2.0.21" />
   </ItemGroup>
 </Project>

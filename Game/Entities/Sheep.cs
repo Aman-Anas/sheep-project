@@ -4,10 +4,14 @@ using Godot;
 
 namespace Game.Entities;
 
+[GlobalClass]
 public partial class Sheep : RigidBody3D
 {
     [Export]
     float forceMult = 1.0f;
+
+    [Export]
+    public Node3D something { get; set; } = null!;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready() { }
@@ -23,7 +27,10 @@ public partial class Sheep : RigidBody3D
             )
             .Normalized();
 
-        state.ApplyCentralForce((forceMult * new Vector3(inputVec.X, 0f, inputVec.Y)));
+        state.ApplyCentralForce(
+            GlobalBasis * (forceMult * new Vector3(inputVec.X, 0f, inputVec.Y))
+        );
+        state.AngularVelocity = Vector3.Zero;
 
         if (Input.IsActionJustPressed(GameActions.PlayerJump))
         {
@@ -31,8 +38,12 @@ public partial class Sheep : RigidBody3D
         }
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    // public override void _Process(double delta)
-    // {
-    // }
+    public Laser SpawnNewLaser()
+    {
+        var laserScene = GD.Load<PackedScene>("uid://b2y7y7abuxj35");
+        var newLaser = laserScene.Instantiate<Laser>();
+        GetTree().Root.AddChild(newLaser);
+        newLaser.GlobalPosition = something.GlobalPosition;
+        return newLaser;
+    }
 }
