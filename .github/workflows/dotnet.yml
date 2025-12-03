@@ -38,7 +38,9 @@ jobs:
 
       - name: Run unit tests
         shell: bash
-        run: ~/.config/godotenv/godot/bin/godot --headless --run-tests --quit-on-finish
+        run: |
+          ~/.config/godotenv/godot/bin/godot --headless --editor --quit
+          ~/.config/godotenv/godot/bin/godot --headless --run-tests --quit-on-finish --path .
 
       - name: Package for release
         run: ~/.config/godotenv/godot/bin/godot --headless --export-release "Windows Desktop" "build/win64/sheep_project.exe"
