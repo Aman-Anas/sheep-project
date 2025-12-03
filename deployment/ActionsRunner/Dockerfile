@@ -1,4 +1,9 @@
 FROM ubuntu:24.04
+
+# Set locale to avoid Ansible errors
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends software-properties-common
 RUN add-apt-repository ppa:dotnet/backports
