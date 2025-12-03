@@ -1,4 +1,9 @@
 FROM ubuntu:24.04
+
+# Set locale to avoid Ansible errors
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends software-properties-common
 RUN add-apt-repository ppa:dotnet/backports
@@ -7,6 +12,10 @@ RUN apt-get install -y --no-install-recommends dotnet-sdk-9.0 ansible
 RUN apt-get install -y zip unzip sudo
 
 COPY ./actions-runner /app/actions-runner
+
+# Copy Ansible playbooks and inventory
+COPY hosts.yaml /etc/ansible/hosts
+COPY provision-test-env.yaml /etc/ansible/provision-test-env.yaml
 
 ARG USERNAME=appuser
 ARG USER_UID=1234

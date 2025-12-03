@@ -16,6 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Run Ansible playbook to provision environment
+        env:
+          LC_ALL: C.UTF-8
+          LANG: C.UTF-8
+        run: ansible-playbook -i deployment/ActionsRunner/hosts.yaml deployment/ActionsRunner/provision-test-env.yaml
+
       - name: Restore dependencies
         run: dotnet restore
 

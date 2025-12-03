@@ -2,19 +2,16 @@
 - name: Deploy Sheep Project
   hosts: all
   become: yes
-  become_method: sudo
   tasks:
     - name: Install software-properties-common
       ansible.builtin.apt:
         name: software-properties-common
         state: present
-        update_cache: yes
-    - name: Add dotnet backports PPA
-      ansible.builtin.apt_repository:
-        repo: ppa:dotnet/backports
-        state: present
+        allow_unauthenticated: true
+
     - name: Install dotnet SDK
       ansible.builtin.apt:
         name: dotnet-sdk-9.0
         state: present
         update_cache: yes
+        allow_unauthenticated: true
