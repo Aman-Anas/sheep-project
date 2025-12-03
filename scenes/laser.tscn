@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2y7y7abuxj35"]
+
+[ext_resource type="Script" uid="uid://dyex2biu7pob8" path="res://Game/Entities/Laser.cs" id="1_xmihv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5no5p"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.9764706, 0, 0, 1)
+emission_energy_multiplier = 8.46
+
+[sub_resource type="BoxMesh" id="BoxMesh_xmihv"]
+material = SubResource("StandardMaterial3D_5no5p")
+size = Vector3(0.1, 0.1, 0.95)
+
+[node name="Laser" type="Node3D"]
+script = ExtResource("1_xmihv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_xmihv")

@@ -22,5 +22,45 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
 
-      - name: Test
-        run: dotnet test --no-build --verbosity normal
+      - run: |
+          dotnet tool restore
+          dotnet csharpier check .
+
+      - name: Install godot version
+        run: godotenv godot install 4.5.1
+
+      - name: Set using godot version
+        run: godotenv godot use 4.5.1
+
+      # - name: Download Godot export templates
+      #   shell: bash
+      #   run: |
+      #     TEMPLATE_VERSION="4.5.1.stable.mono"
+      #     TEMPLATE_DIR="$HOME/.local/share/godot/export_templates/$TEMPLATE_VERSION"
+      #     mkdir -p "$TEMPLATE_DIR"
+      #     curl -L "https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_mono_export_templates.tpz" -o /tmp/templates.tpz
+      #     unzip -o /tmp/templates.tpz -d /tmp/templates
+      #     mv /tmp/templates/templates/* "$TEMPLATE_DIR/"
+      #     rm -rf /tmp/templates /tmp/templates.tpz
+
+      - name: Import Godot project
+        shell: bash
+        run: ~/.config/godotenv/godot/bin/godot --headless --import --quit
+
+      - name: Run unit tests
+        shell: bash
+        run: |
+          ~/.config/godotenv/godot/bin/godot --headless --editor --quit
+          ~/.config/godotenv/godot/bin/godot --headless --run-tests --quit-on-finish --path .
+
+      - name: Package for release
+        shell: bash
+        run: |
+          mkdir -p build/win64
+          ~/.config/godotenv/godot/bin/godot --headless --export-release "Windows Desktop" "build/win64/sheep_project.exe"
+
+      - name: Upload Windows Build
+        uses: actions/upload-artifact@v3
+        with:
+          name: sheep_project-windows
+          path: build/win64/
