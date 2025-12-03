@@ -16,6 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Run Ansible playbook to provision environment
+        run: ansible-playbook -i deployment/ActionsRunner/hosts.yaml deployment/ActionsRunner/provision-test-env.yaml
+
       - name: Restore dependencies
         run: dotnet restore
 

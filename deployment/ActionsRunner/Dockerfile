@@ -8,6 +8,10 @@ RUN apt-get install -y zip unzip sudo
 
 COPY ./actions-runner /app/actions-runner
 
+# Copy Ansible playbooks and inventory
+COPY hosts.yaml /etc/ansible/hosts
+COPY provision-test-env.yaml /etc/ansible/provision-test-env.yaml
+
 ARG USERNAME=appuser
 ARG USER_UID=1234
 ARG USER_GID=$USER_UID
