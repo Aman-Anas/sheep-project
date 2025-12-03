@@ -20,4 +20,12 @@ USER $USERNAME
 RUN dotnet tool install --global Chickensoft.GodotEnv
 ENV PATH="~/.dotnet/tools:${PATH}"
 
+ENV TEMPLATE_VERSION="4.5.1.stable.mono"
+ENV TEMPLATE_DIR="~/.local/share/godot/export_templates/$TEMPLATE_VERSION"
+RUN mkdir -p "$TEMPLATE_DIR"
+RUN curl -L "https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_mono_export_templates.tpz" -o /tmp/templates.tpz
+RUN unzip -o /tmp/templates.tpz -d /tmp/templates
+RUN mv /tmp/templates/templates/* "$TEMPLATE_DIR/"
+RUN rm -rf /tmp/templates /tmp/templates.tpz
+
 ENTRYPOINT ["/app/actions-runner/run.sh"]
