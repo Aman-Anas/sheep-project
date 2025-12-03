@@ -32,8 +32,22 @@ jobs:
       - name: Set using godot version
         run: godotenv godot use 4.5.1
 
+      - name: Import Godot project
+        shell: bash
+        run: ~/.config/godotenv/godot/bin/godot --headless --import --quit
+
       - name: Run unit tests
         shell: bash
         run: |
           ~/.config/godotenv/godot/bin/godot --editor --quit
           ~/.config/godotenv/godot/bin/godot --headless --run-tests --quit-on-finish --path .
+
+      - name: Package for release
+        run: ~/.config/godotenv/godot/bin/godot --headless --export-release "Windows Desktop" "build/win64/sheep_project.exe"
+
+      - name: Upload Windows Build
+        uses: actions/upload-artifact@v4
+        with:
+          name: sheep_project-windows
+          path: build/win64/
+          compression-level: 9
