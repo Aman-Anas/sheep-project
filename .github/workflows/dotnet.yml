@@ -34,4 +34,6 @@ jobs:
 
       - name: Run unit tests
         shell: bash
-        run: ~/.config/godotenv/godot/bin/godot --headless --run-tests --quit-on-finish
+        run: |
+          ~/.config/godotenv/godot/bin/godot --editor --quit
+          ~/.config/godotenv/godot/bin/godot --headless --run-tests --quit-on-finish --path .
